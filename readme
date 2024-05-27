@@ -1,0 +1,46 @@
+# class UserViewSet(viewsets.ModelViewSet):
+#     queryset = User.objects.all()
+#     serializer_class = UserSerializer
+
+#     def create(self, request, *args, **kwargs):
+#         serializer = self.get_serializer(data=request.data)
+#         serializer.is_valid(raise_exception=True)
+#         user = User.objects.create_user(**serializer.validated_data)
+#         return Response(UserSerializer(user).data, status=status.HTTP_201_CREATED)
+
+
+
+
+
+
+
+# 1. ModelViewSet is a type of view in Django Rest Framework (DRF) that
+#  provides default create(), retrieve(), update(), partial_update(),
+#  destroy() and list() actions for a model in Django.
+
+# 2. queryset = User.objects.all() This line is defining the default queryset that this
+#    view will operate on. In this case, it’s all instances of the User model. 
+#    The User model is Django’s built-in model for representing users.
+
+# 3. serializer_class = UserSerializer This line is specifying the serializer 
+#    class that this view will use to convert model instances to JSON and vice versa.
+ 
+# 4. def create(self, request, *args, **kwargs): This line is defining a new method called create that will 
+#    be used to handle POST requests to this view. The request parameter is an instance of rest_framework.request.Request,
+#    and *args and **kwargs are used to capture any additional positional and keyword arguments.
+
+# 5. serializer = self.get_serializer(data=request.data) This line is creating a new instance 
+#    of the serializer class (in this case, UserSerializer) with the data from the request.
+   
+# 6. serializer.is_valid(raise_exception=True) This line is validating the data. If the data 
+#    is invalid (for example, if a required field is missing), 
+#    it will raise a 400 Bad Request error.    
+
+# 7. user = User.objects.create_user(**serializer.validated_data) This line is creating a new User instance with the validated data.
+
+#   The create_user method is a helper method provided 
+#   by Django’s User model that handles things like password hashing.
+
+# 8. return Response(UserSerializer(user).data, status=status.HTTP_201_CREATED) This line is returning a response
+#    with the serialized data 
+#    of the newly created user and a 201 Created status code.
